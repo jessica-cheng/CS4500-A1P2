@@ -35,6 +35,10 @@ class Array : public Object
         // this compares two arrays, to see if they are the same
         virtual bool equals(Object *oo);
 
+        // remove an element from the array
+        // returns the element removed
+        virtual Object* remove(int nn);
+
         // print content
         // -1 on failure, 0 on success
         virtual void print();
