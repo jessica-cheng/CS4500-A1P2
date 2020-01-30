@@ -24,8 +24,13 @@ class Array : public Object {
     // returning the removed item to the caller
     Object* remove(int nn) {}
 
+    bool has(Object *oo);
+
     // returns the length of the array.
     virtual int length() {}
+
+    // insert item at nn
+    virtual void insert(int nn, Object* oo);
 
     // set n'th element to the given object
     // returns the replace Object.
@@ -52,19 +57,20 @@ class IntArray : public Array {
   // destructor
   ~IntArray() {}
 
-  void append(Object* oo) {}
-
   // putting an item at the end of the array
   void append(int oo) {}
 
   // get the n'th item in the array
   int get(int nn) {}
 
+  bool has(int nn);
+
   // remove the n'th item in the array
   // returning the removed item to the caller
   int remove(int nn) {}
 
-  Object* set(int nn, Object* oo) {}
+  // insert item at nn
+  int insert(int nn, int ii);
 
   // set n'th element to the given element
   // returns the replace Object.
@@ -90,8 +96,6 @@ class FloatArray : public Array {
   // destructor
   ~FloatArray() {}
 
-  void append(Object* oo) {}
-
   // putting an item at the end of the array
   void append(float oo) {}
 
@@ -102,13 +106,14 @@ class FloatArray : public Array {
   // returning the removed item to the caller
   float remove(int nn) {}
 
-  Object* set(int nn, Object* oo) {}
+  bool has(float ff);
+
+  // insert item at nn
+  void insert(int nn, float ff);
 
   // set n'th element to the given element
   // returns the replace Object.
   float set(int nn, float oo) {}
-
-  int index_of(Object* oo) {}
 
   // get the index of an float in the array
   int index_of(float oo) {}
@@ -127,8 +132,6 @@ class BoolArray : public Array {
   // destructor
   ~BoolArray() {}
 
-  void append(Object* oo);
-
   // putting an item at the end of the array
   void append(bool oo);
 
@@ -139,13 +142,14 @@ class BoolArray : public Array {
   // returning the removed item to the caller
   bool remove(int nn);
 
-  Object* set(int nn, Object* oo);
+  // insert item at ii
+  void insert(int nn, bool bb);
+
+  bool has(bool bb);
 
   // set n'th element to the given element
   // returns the replace Object.
   bool set(int nn, bool oo);
-
-  int index_of(Object* oo);
 
   // get the index of an element in the array
   int index_of(bool oo);
@@ -166,17 +170,21 @@ class StringArray : public Array {
   ~StringArray() {}
 
   // putting an item at the end of the array
-  void append(Object* oo);
-
   void append(String* oo);
 
   String* get(int nn);
+
+  void insert(int nn, String* ss);
+
+  int index_of(String* ss);
+
+  bool has(String* ss);
 
   // remove the n'th item in the array
   // returning the removed item to the caller
   String* remove(int nn);
 
-  Object* set(int nn, Object* oo);
+  String* set(int nn, String* oo);
 
   // set n'th element to the given object
   // returns the replace Object.
