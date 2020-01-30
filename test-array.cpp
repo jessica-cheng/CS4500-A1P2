@@ -2,44 +2,131 @@
 #include "array.h"
 #include <assert.h>
 
-class Integer : public Object
-{
-    public:
-        int val;
-        Integer(int ii)
-        {
-            val = ii;
-        }
-};
 
 int
 main(int argc, char **argv)
 {
-    int ii = 0;
-    Array aa;
+    // tests
+
+    // Object array
+    printf("tests for Object Array\n");
+
+    Array* aa = new Array();
+    if(aa)
+    {
+        puts("Object array constructor: OK");
+    }
+    else
+    {
+        abort();
+    }
     
-    // test for append
-    for(; ii < 100; ii++)
+
+    assert(aa->length() == 0);
+    Object* foo = new Object();
+    aa->append(foo);
+    assert(aa->length() == 1);
+    assert(aa->get(0)->equals(foo));
+    
+    Object* bar = new Object();
+    Object* oo = aa->set(0, bar);
+
+    // tests for set
+    assert(foo->equals(oo));
+    assert(bar->equals(aa->get(0)));
+
+    // tests for remove
+    Object* nn = aa->remove(0);
+    assert(nn->equals(bar));
+    assert(aa->length() == 0);
+    delete(foo);
+    delete(bar);
+
+    // tests for index_of
+    foo = new Object;
+    bar = new Object;
+    aa->append(foo);
+    aa->append(bar);
+    assert(aa->index_of(bar) == 1);
+
+    // tests for destructor
+    delete(aa);
+    if(aa)
     {
-        Integer *jj = new Integer(ii);
-        aa.append(jj);
+        abort();
+    }
+    else{
+        puts("Object array destructor: OK");
     }
 
-    // test for length
-    assert(aa.length() == 100);
-    Array bb;
+    printf("tests for Object Array passed\n");
 
+    // tests for IntArray
 
-
-    assert(aa.equals(bb) == 0);
-    ii = 0;
-    for(; ii < 100; ii++)
+    // tests for append
+    IntArray *ia = new IntArray();
+    if(ia)
     {
-        Integer *dd = new Integer(ii);
-        bb.append(dd);
+        puts("Intger array constructor: OK");
     }
-    assert(aa.equals(bb) == 0);
-    assert(aa.equals(aa) == 1);
+    else
+    {
+        abort();
+    }
+
+    // tests for append and get
+    assert(ia->length() == 0);
+    ia->append(0);
+    assert(ia->length() == 1);
+    ia->append(1);
+    assert(ia->length() == 2);
+
+    
+    assert(ia->get(0) == 0);
+    assert(ia->get(1) == 1);
+
+    //tests for set
+
+    int ii = ia->set(0, 100);
+    assert(ii == 0);
+    assert(ia->get(0) == 100);
+
+    // indexof
+    assert(ia->index_of(100) == 0);
+    assert(ia->index_of(1) == 1);
+
+    // tests for remove
+    ii = ia->remove(0);
+    assert(ii = 100);
+    assert(ia->length() == 1);
+    ii = ia->remove(0);
+    assert(ii = 1);
+    assert(ia->length() == 0);
+
+    // delete
+    delete(ia);
+    if(ia)
+    {
+        abort();
+    }
+    else
+    {
+        puts("intArray destructor: OK");
+    }
+
+    printf("tests for Integer Array passed\n");
+    
+    // FloatArray
+    
+    FloatArray* fa = new FloatArray();
+    if(fa)
+    {
+        puts("float array constructor: OK");
+    }
+    
+    assert(fa->length() == 0);
+    fa->append(1.0);
+    assert(fa->length == 1);
 
     puts("all tests passed");
     return 0;
