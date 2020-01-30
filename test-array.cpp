@@ -127,7 +127,89 @@ main(int argc, char **argv)
     assert(fa->length() == 0);
     fa->append(1.0);
     assert(fa->length == 1);
+    fa->append(2.0);
+    assert(fa->length == 2);
 
+    // get
+    assert(fa->get(0) == 1.0);
+    assert(fa->get(1) == 2.0);
+
+    // index_of
+    assert(fa->index_of(1.0) == 0);
+    assert(fa->index_of(2.0) == 1);
+
+    // remove
+    float ff = fa->remove(0);
+    assert(ff = 1.0);
+    assert(fa->length() == 1);
+
+    // set
+    ff = fa->set(0, 100.0);
+    assert(ff = 2.0);
+    assert(fa->get(0) == 100.0);
+    
+    // destructor
+    delete(fa);
+    if(fa)
+    {
+        abort;
+    }
+    else
+    {
+        puts("Float Array destructor: OK");
+    }
+    printf("tests for Float Array passed\n");
+
+    // bool array
+
+    BoolArray *ba = new BoolArray();
+    if(ba)
+    {
+        puts("bool array constructor: OK");
+    }
+    else
+    {
+        abort();
+    }
+
+    bool ff = false;
+    bool tt = true;
+    assert(ba->length() == 0);
+    ba->append(ff);
+    assert(ba->length() == 1);
+    ba->append(tt);
+    assert(ba->length() == 2);
+    
+    assert(ba->get(0) == ff);
+    assert(ba->get(1) == tt);
+
+    //remove
+    bool foo = ba->remove(0);
+    assert(foo == false);
+    assert(ba->length() == 1);
+
+    
+    // set
+    bool bar = ba->set(0, false);
+    assert(bar);
+    assert(!(ba->get(0)));
+
+    // index_of
+    assert(ba->index_of(false) == 0);
+
+    // delete
+    delete(ba);
+
+    if(ba)
+    {
+        abort();
+    }
+    else
+    {
+        puts("ba destructor: OK");
+    }
+    
+    printf("tests for Integer Array passed\n");
     puts("all tests passed");
     return 0;
 }
