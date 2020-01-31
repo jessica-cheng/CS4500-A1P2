@@ -50,14 +50,7 @@ main(int argc, char **argv)
     assert(aa->index_of(bar) == 1);
 
     // tests for destructor
-    delete(aa);
-    if(aa)
-    {
-        abort();
-    }
-    else{
-        puts("Object array destructor: OK");
-    }
+    delete aa;
 
     printf("tests for Object Array passed\n");
 
@@ -104,15 +97,7 @@ main(int argc, char **argv)
     assert(ia->length() == 0);
 
     // delete
-    delete(ia);
-    if(ia)
-    {
-        abort();
-    }
-    else
-    {
-        puts("intArray destructor: OK");
-    }
+    delete ia;
 
     printf("tests for Integer Array passed\n");
     
@@ -149,15 +134,7 @@ main(int argc, char **argv)
     assert(fa->get(0) == 100.0);
     
     // destructor
-    delete(fa);
-    if(fa)
-    {
-        abort();
-    }
-    else
-    {
-        puts("Float Array destructor: OK");
-    }
+    delete fa;
     printf("tests for Float Array passed\n");
 
     // bool array
@@ -198,16 +175,7 @@ main(int argc, char **argv)
     assert(ba->index_of(false) == 0);
 
     // delete
-    delete(ba);
-
-    if(ba)
-    {
-        abort();
-    }
-    else
-    {
-        puts("ba destructor: OK");
-    }
+    delete ba;
     
     printf("tests for Integer Array passed\n");
     puts("all tests passed");
