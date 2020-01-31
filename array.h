@@ -5,6 +5,9 @@
 #include "string.h"
 
 // assuming an array is a java-style arraylist
+// note: array doesn't own the object.
+// meaning: deleting this array doesn't automatically delete objects in it.
+// tests will fail if otherwise.
 class Array : public Object {
    public:
 
