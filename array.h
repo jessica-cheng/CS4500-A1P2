@@ -5,9 +5,6 @@
 #include "string.h"
 
 // assuming an array is a java-style arraylist
-// note: array doesn't own the object.
-// meaning: deleting this array doesn't automatically delete objects in it.
-// tests will fail if otherwise.
 class Array : public Object {
    public:
 
@@ -21,22 +18,22 @@ class Array : public Object {
     virtual void append(Object* oo) {}
 
     // get the n'th item in the array
-    Object* get(int nn) {}
+    Object* get(size_t nn) {}
 
     // remove the n'th item in the array
     // returning the removed item to the caller
-    Object* remove(int nn) {}
+    Object* remove(size_t nn) {}
 
 
     // returns the length of the array.
-    virtual int length() {}
+    virtual size_t length() {}
 
     // set n'th element to the given object
     // returns the replace Object.
-    virtual Object* set(int nn, Object* oo) {}
+    virtual Object* set(size_t nn, Object* oo) {}
 
     // get the index of an object in the array
-    virtual int index_of(Object* oo) {}
+    virtual size_t index_of(Object* oo) {}
 
     // Compares other with this array for equality.
     bool equals(Object* oo) {}
@@ -57,24 +54,22 @@ class IntArray : public Array {
   ~IntArray() {}
 
   // putting an item at the end of the array
-  void append(int oo) {}
+  void append(size_t oo) {}
 
   // get the n'th item in the array
-  int get(int nn) {}
+  int get(size_t nn) {}
 
 
   // remove the n'th item in the array
   // returning the removed item to the caller
-  int remove(int nn) {}
+  size_t remove(size_t nn) {}
 
   // set n'th element to the given element
   // returns the replace Object.
-  int set(int nn, int oo) {}
-
-  int index_of(Object* oo) {}
+  size_t set(size_t nn, int oo) {}
 
   // get the index of an element in the array
-  int index_of(int oo) {}
+  size_t index_of(int oo) {}
 
   // Compares other with this array for equality.
   bool equals(Object* oo) {}
@@ -95,18 +90,18 @@ class FloatArray : public Array {
   void append(float oo) {}
 
   // get the n'th item in the array
-  float get(int nn) {}
+  float get(size_t nn) {}
 
   // remove the n'th item in the array
   // returning the removed item to the caller
-  float remove(int nn) {}
+  float remove(size_t nn) {}
 
   // set n'th element to the given element
   // returns the replace Object.
-  float set(int nn, float oo) {}
+  float set(size_t nn, float oo) {}
 
   // get the index of an float in the array
-  int index_of(float oo) {}
+  size_t index_of(float oo) {}
 
   // Compares other with this array for equality.
   bool equals(Object* oo) {}
@@ -126,18 +121,18 @@ class BoolArray : public Array {
   void append(bool oo);
 
   // get the n'th item in the array
-  bool get(int nn);
+  bool get(size_t nn);
 
   // remove the n'th item in the array
   // returning the removed item to the caller
-  bool remove(int nn);
+  bool remove(size_t nn);
 
   // set n'th element to the given element
   // returns the replace Object.
-  bool set(int nn, bool oo);
+  bool set(size_t nn, bool oo);
 
   // get the index of an element in the array
-  int index_of(bool oo);
+  size_t index_of(bool oo);
 
   // Compares other with this array for equality.
   bool equals(Object* oo);
@@ -156,18 +151,18 @@ class StringArray : public Array {
 
   // putting an item at the end of the array
   void append(String* oo);
+   
+  // get the n'th item in the array 
+  String* get(size_t nn);
 
-  String* get(int nn);
-
-  int index_of(String* ss);
+  // get the index of an element in the array 
+  size_t index_of(String* ss);
 
   // remove the n'th item in the array
   // returning the removed item to the caller
-  String* remove(int nn);
-
-  String* set(int nn, String* oo);
+  String* remove(size_t nn);
 
   // set n'th element to the given object
   // returns the replace Object.
-  String* set(int nn, String* oo);
+  String* set(size_t nn, String* oo);
 };
