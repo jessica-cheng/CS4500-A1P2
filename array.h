@@ -162,8 +162,6 @@ class StringArray : public Array {
   // returning the removed item to the caller
   String* remove(int nn);
 
-  String* set(int nn, String* oo);
-
   // set n'th element to the given object
   // returns the replace Object.
   String* set(int nn, String* oo);
