@@ -126,9 +126,9 @@ main(int argc, char **argv)
     
     assert(fa->length() == 0);
     fa->append(1.0);
-    assert(fa->length == 1);
+    assert(fa->length() == 1);
     fa->append(2.0);
-    assert(fa->length == 2);
+    assert(fa->length() == 2);
 
     // get
     assert(fa->get(0) == 1.0);
@@ -152,7 +152,7 @@ main(int argc, char **argv)
     delete(fa);
     if(fa)
     {
-        abort;
+        abort();
     }
     else
     {
@@ -172,26 +172,26 @@ main(int argc, char **argv)
         abort();
     }
 
-    bool ff = false;
+    bool f = false;
     bool tt = true;
     assert(ba->length() == 0);
-    ba->append(ff);
+    ba->append(f);
     assert(ba->length() == 1);
     ba->append(tt);
     assert(ba->length() == 2);
     
-    assert(ba->get(0) == ff);
+    assert(ba->get(0) == f);
     assert(ba->get(1) == tt);
 
     //remove
-    bool foo = ba->remove(0);
-    assert(foo == false);
+    bool foo2 = ba->remove(0);
+    assert(foo2 == false);
     assert(ba->length() == 1);
 
     
     // set
-    bool bar = ba->set(0, false);
-    assert(bar);
+    bool bar2 = ba->set(0, false);
+    assert(bar2);
     assert(!(ba->get(0)));
 
     // index_of
