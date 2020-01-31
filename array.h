@@ -24,13 +24,9 @@ class Array : public Object {
     // returning the removed item to the caller
     Object* remove(int nn) {}
 
-    bool has(Object *oo);
 
     // returns the length of the array.
     virtual int length() {}
-
-    // insert item at nn
-    virtual void insert(int nn, Object* oo);
 
     // set n'th element to the given object
     // returns the replace Object.
@@ -63,14 +59,10 @@ class IntArray : public Array {
   // get the n'th item in the array
   int get(int nn) {}
 
-  bool has(int nn);
 
   // remove the n'th item in the array
   // returning the removed item to the caller
   int remove(int nn) {}
-
-  // insert item at nn
-  int insert(int nn, int ii);
 
   // set n'th element to the given element
   // returns the replace Object.
@@ -106,11 +98,6 @@ class FloatArray : public Array {
   // returning the removed item to the caller
   float remove(int nn) {}
 
-  bool has(float ff);
-
-  // insert item at nn
-  void insert(int nn, float ff);
-
   // set n'th element to the given element
   // returns the replace Object.
   float set(int nn, float oo) {}
@@ -142,11 +129,6 @@ class BoolArray : public Array {
   // returning the removed item to the caller
   bool remove(int nn);
 
-  // insert item at ii
-  void insert(int nn, bool bb);
-
-  bool has(bool bb);
-
   // set n'th element to the given element
   // returns the replace Object.
   bool set(int nn, bool oo);
@@ -174,11 +156,7 @@ class StringArray : public Array {
 
   String* get(int nn);
 
-  void insert(int nn, String* ss);
-
   int index_of(String* ss);
-
-  bool has(String* ss);
 
   // remove the n'th item in the array
   // returning the removed item to the caller
